@@ -1,30 +1,25 @@
-name: Runs Test Env Smoke Pack
+name: Config
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
-      EnvironmentName:
-        type: multi-choice
+      environment:
+        type: choice
         required: true
-        description: "Select the environment"
-        options:
-          - dcp-test
-          - dcp-dev
-          - preprod
-      EnvironmentNumber:
-        type: number
+        default: 'qa'
+        options: 
+          - qa
+          - dev
+      apihost:
+        type: choice
         required: true
-        default: 2
-        description: "Environment number (e.g., 1, 2, 3)"
-      TestsToRun:
-        type: multi-choice
-        required: false
-        description: "Components to run"
+        default: 'fqdn-qa'
         options:
-          - "B2B_CSL_ERES_PAYS_SEATING"
-          - "Frontend; B2B_CSL_ERES_PAYS_SEATING"
-          - "Frontend; Forgerock; B2B_CSL_ERES_PAYS_SEATING"
-          - "Frontend; SSDM; B2B_CSL_ERES_PAYS_SEATING"
+          - https://fqdn-qa
+          - https://fqdn-dev
+
+permissions:
+    id-token: write
+    contents: read
+    packages: read
+
