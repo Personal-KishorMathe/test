@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       EnvironmentName:
-        type: choice
+        type: multi-choice
         required: true
         default: "preprod"
         description: "Select the environment"
@@ -21,7 +21,7 @@ on:
         default: 2
         description: "Environment number (e.g., 1, 2, 3)"
       TestsToRun:
-        type: choice
+        type: multi-choice
         required: false
         default: ""
         description: "Components to run"
