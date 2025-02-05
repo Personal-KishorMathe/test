@@ -1,0 +1,32 @@
+name: Runs Test Env Smoke Pack
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      EnvironmentName:
+        type: multi-choice
+        required: true
+        default: "preprod"
+        description: "Select the environment"
+        options:
+          - dcp-test
+          - dcp-dev
+          - preprod
+      EnvironmentNumber:
+        type: number
+        required: true
+        default: 2
+        description: "Environment number (e.g., 1, 2, 3)"
+      TestsToRun:
+        type: multi-choice
+        required: false
+        default: ""
+        description: "Components to run"
+        options:
+          - "B2B_CSL_ERES_PAYS_SEATING"
+          - "Frontend; B2B_CSL_ERES_PAYS_SEATING"
+          - "Frontend; Forgerock; B2B_CSL_ERES_PAYS_SEATING"
+          - "Frontend; SSDM; B2B_CSL_ERES_PAYS_SEATING"
