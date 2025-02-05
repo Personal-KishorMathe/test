@@ -9,7 +9,6 @@ on:
       EnvironmentName:
         type: multi-choice
         required: true
-        default: "preprod"
         description: "Select the environment"
         options:
           - dcp-test
@@ -23,7 +22,6 @@ on:
       TestsToRun:
         type: multi-choice
         required: false
-        default: ""
         description: "Components to run"
         options:
           - "B2B_CSL_ERES_PAYS_SEATING"
